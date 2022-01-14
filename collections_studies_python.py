@@ -259,3 +259,125 @@ print("usando o total_ordering")
 print(objeto1<=objeto2)
 print(objeto1<=objeto3)
 print(objeto2>=objeto3)
+
+#PARTE 2
+
+usuarios_data_science = [15, 42, 56, 34]
+usuarios_machine_learning = [22, 42, 56, 36]
+
+#assistiram = []
+#assistiram.extend(usuarios_data_science)
+#ou
+#criar uma copia raza (quando copia objetos, copia so a referencia)
+assistiram = usuarios_data_science.copy()
+assistiram.extend(usuarios_machine_learning)
+print(assistiram)
+#SET vem de conjuntos da matematica. remove os elementos repetidos e retorna
+#para criar um conjunto simples (type = set) basta usar {}
+print(set(assistiram))
+print([1,2,4,1,5])
+print(set([1,2,4,1,5]))
+print({1,2,4,1,5})
+#nao existe ordem de entrada num conjunto as posicoes sao aleatorias, porem e um iteravel e mutavel.
+#assim, nao se pode acessar uma posicao, como numa lista
+#usa-se conjuntos qunado a ordem de entrada nao imporata
+for i in set(assistiram):
+    print(i)
+
+#OU para conjuntos
+usuarios_data_science = {15, 42, 56, 34}
+usuarios_machine_learning = {22, 42, 56, 36}
+print(usuarios_data_science | usuarios_machine_learning) # OU - um ou outro (uniao dos elementos dos dois conjuntos
+print(usuarios_data_science & usuarios_machine_learning) # & - somente os elementos em comum
+print(usuarios_data_science - usuarios_machine_learning) # remove os elementos que aparecem tb no segundo conjunto
+print(usuarios_data_science ^ usuarios_machine_learning) # OU EXCLUSIVO - aparece em apenas 1 dos dois conjuntos (nao aparece em 2)
+
+usuarios_data_science.add(13) #adiciona elementos no conjunto (.append() nao funciona pq n tem ordem aqui)
+print(usuarios_data_science)
+
+usuarios = usuarios_data_science & usuarios_machine_learning
+frozenset(usuarios) #transforma um conjunto em imutavel
+print(usuarios)
+
+#conjuntos podem ser utilizados com outras coisas, como objetos, strings etc..
+texto = "Meu nome e Carlos e eu gosto muito de cachorros de nome Carlos"
+texto_quebrado = texto.split()
+print(texto_quebrado) #quebra um conjunto de texto, por padrao com espacos vazios
+print(set(texto_quebrado))
+
+
+#dicionario
+dicionario = {"Carlos": 2, "cachorro": 1, "sapato": 1, "Marie": 2}
+print(dicionario.get("Carlos",0)) #se nao pegar no dicionario, retorna zero
+print(dicionario.get("Fernando",0))
+dicionario2 = dict(Guilherme = 1, Luffy = 2) #istancia dicionario diretamente
+print(dicionario2)
+del(dicionario["Carlos"]) #remove 1 elemento do dicionario
+print(dicionario)
+print("Carlos" in dicionario)
+print("sapato" in dicionario)
+for i in dicionario: #imprime as chaves, nao os valores
+    print(i)
+for i in dicionario.keys(): #outra forma
+    print(i)
+for i in dicionario.values(): #imprime os valores, nao as chaves
+    print(i)
+for i in dicionario.items(): #imprime linha a linha - como tuplas
+    print(i)
+for chave, valor in dicionario.items(): #imprime linha a linha - como tuplas ja desempacotadas
+    print(chave, valor)
+
+#ja que cria uma lista, podemos fazer list comprehension
+list_comprehension = ["palvra {}".format(i) for i in dicionario.keys()]
+print(list_comprehension)
+
+#contado elementos na lista de palavras
+texto_low = texto.lower()
+texto_low_quebrado = texto_low.split()
+print(texto_low_quebrado)
+aparicoes = {}
+for palavra in texto_low_quebrado:
+    ate_agr = aparicoes.get(palavra, 0) #procura se ha a palavra em "aparicoes", senao, retorna zero. se sim, pega a chave
+    aparicoes[palavra] = ate_agr + 1 #se a palavra nao existe na lista, vai adiciona-la, como no teste abaixo. soma 1 dps
+print("contando as palavras do texto:", aparicoes)
+aparicoes["testando"] = 10 #no caso das "palavras" acima, nao precisa de aspas pq reconhece a lista de strings
+print(aparicoes)
+
+#agr usando defaultdict()
+print("agora usando defaultdict")
+from collections import defaultdict
+#tem que passar uma funcao "fabrica de valor padrao" para o defaultdict
+#ferramenta super poderosa, podemos criar qualquer funcao que sera chamada quando o dicionario n achar um valor.
+#podemos criar objetos novos, por exemplo etc...
+#a funcao int(), quando nenhum valor e passado retorna zero, senao retorna o valor inteiro
+#passar so o tipo, nao sei pq
+aparicoes2 = defaultdict(int)
+for palavra in texto_low_quebrado:
+    #ate_agr = aparicoes2[palavra] #agr nao precisa da funcao get, o default ja existe
+    #aparicoes2[palavra] = ate_agr + 1
+    aparicoes2[palavra] += 1 #agr nem precisa dessa variavel temporaria "ate_agr"
+print(aparicoes2)
+aparicoes2["testando defaultdict"]
+aparicoes2["testando de novo"] = 14
+print(aparicoes2)
+
+#usando contador (recebe um iteravel ou um mapping (dicionario) e retorna dicionario que conta os proprios elementos)
+from collections import Counter
+print("usando funcao contador")
+aparicoes3 = Counter(texto_low_quebrado)
+print(aparicoes3)
+
+#contando letras num texto
+print("contando letras")
+texto2 = """ Então o que vamos fazer é o seguinte: vamos pegar dois textos, por exemplo eu posso entrar no blog da Alura e pegar textos do blog da Alura. Eu posso pegar um texto que está falando sobre expressões regulares e posso pegar um outro texto de outro assunto, só para não termos dois assuntos similares. Vou pegar um o outro assunto, temos um de programação e um aqui que é de negócios: B2C, B2B, coisas do gênero. Então dois assuntos distintos, um de programação e um não de programação. """
+def conta_letras(texto):
+    aparicoes = Counter(texto.lower())
+    total_de_caracteres = sum(aparicoes.values())
+    proporcoes = [(letra, valor/total_de_caracteres) for letra, valor in aparicoes.items()]
+    contador_proporcoes = Counter(dict(proporcoes))
+    mais_comuns = contador_proporcoes.most_common(10)
+
+    for caractere,proporcao in mais_comuns:
+        print("{} => {:.2f}%".format(caractere, proporcao*100))
+
+conta_letras(texto2)

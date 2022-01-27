@@ -1,151 +1,95 @@
-class Programa:
-    def __init__(self, nome, data):
-        self._nome = nome.title()
-        self.data = data
+class Program:
+    def __init__(self, name, date):
+        self._name = name.title()
+        self.date = date
         self._likes = 0
 
     @property
     def likes(self):
         return self._likes
 
-    def dar_likes(self):
+    def like_it(self):
         self._likes += 1
 
     @property
-    def nome(self):
-        return self._nome
+    def name(self):
+        return self._name
 
-    @nome.setter
-    def nome(self, nome):
-        self._nome = nome
-
-    def __str__(self):
-        return "Nome: {} - Likes: {}".format(self.nome, self.likes)
-
-class Filme(Programa):
-    def __init__(self, nome, data, duracao):
-        super().__init__(nome,data)
-        self.duracao = duracao
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     def __str__(self):
-        return "Nome: {} - Duracao: {} -  Likes: {}".format(self.nome, self.duracao, self.likes)
+        return "Name: {} - Likes: {}".format(self.name, self.likes)
 
-
-class Serie(Programa):
-    def __init__(self, nome, data, temporadas):
-        super().__init__(nome,data)
-        self.temporadas = temporadas
+class Movie(Program):
+    def __init__(self, name, date, length):
+        super().__init__(name,date)
+        self._length = length
 
     def __str__(self):
-        return "Nome: {} - Temporadas: {} -  Likes: {}".format(self.nome, self.temporadas, self.likes)
+        return "Name: {} - Date: {} - Length: {}min - Likes: {} likes".format(self.name, self.date, self._length, self.likes)
+
+class Serie(Program):
+    def __init__(self, name, date, seasons):
+        super().__init__(name,date)
+        self._seasons = seasons
+
+    def __str__(self):
+        return "Name: {} - Date: {} - Seasons: {} - Likes: {} likes".format(self.name, self.date, self._seasons, self.likes)
 
 class Playlist:
-    def __init__(self, nome, lista_de_programas):
-        self.nome = nome
-        self._lista_de_programas = lista_de_programas
+    def __init__(self, name, list_of_programs):
+        self.nome = name
+        self._list_of_programs = list_of_programs
 
     def __getitem__(self, item):
-        return self._lista_de_programas[item]
-
+        return self._list_of_programs[item]
 
     @property
-    def lista(self):
-        return self._lista_de_programas
+    def list(self):
+        return self._list_of_programs
 
     def __len__(self):
-        return len(self.lista)
+        return len(self.list)
 
 
-vingadores = Filme("vingadores guerra infinita", 2018, 160)
-vingadores.dar_likes()
-vingadores.dar_likes()
+avengers = Movie("avengers infinity war", 2018, 160)
+avengers.like_it()
+avengers.like_it()
 
 himym = Serie("how i met your mother", 2012, 8)
-himym.dar_likes()
-himym.dar_likes()
-himym.dar_likes()
-himym.dar_likes()
+himym.like_it()
+himym.like_it()
+himym.like_it()
+himym.like_it()
 
 dbz = Serie("dragon ball z", 1997, 12)
-dbz.dar_likes()
-dbz.dar_likes()
-dbz.dar_likes()
-dbz.dar_likes()
-dbz.dar_likes()
-dbz.dar_likes()
+dbz.like_it()
+dbz.like_it()
+dbz.like_it()
+dbz.like_it()
+dbz.like_it()
+dbz.like_it()
 
-tzt = Filme("300", 2010, 180)
-tzt.dar_likes()
-tzt.dar_likes()
-tzt.dar_likes()
-tzt.dar_likes()
+th = Movie("300", 2010, 180)
+th.like_it()
+th.like_it()
+th.like_it()
+th.like_it()
 
 atlanta = Serie("atltanta", 2018, 2)
-atlanta.dar_likes()
+atlanta.like_it()
 
-listinha = [tzt, vingadores, dbz, himym]
-playlist_fim_de_semana = Playlist("fim de semana", listinha)
-for i in playlist_fim_de_semana:
+print("Weekend playlist")
+little_list = [th, himym]
+playlist_weekend = Playlist("weekend", little_list)
+for i in playlist_weekend:
     print(i)
 
-print("Quantidade de programas na lista: {}".format(len(playlist_fim_de_semana)))
+print("Amount of programs on the list: {}".format(len(playlist_weekend)))
 
-
-class Programa:
-
-    def __init__(self, nome, data):
-        self._nome = nome.title()
-        self.data = data
-        self._likes = 0
-
-    @property
-    def nome(self):
-        return self._nome
-
-    @nome.setter
-    def nome(self, nome):
-        self._nome = nome
-
-    @property
-    def likes(self):
-        return self._likes
-
-    def dar_like(self):
-        self._likes += 1
-
-class Filme(Programa):
-    def __init__(self, nome, data, duracao):
-        super().__init__(nome, data)
-        self._duracao = duracao
-
-    def __str__(self):
-        return "Nome: {} - Data: {} - Duracao: {}min - Likes: {} likes".format(self.nome, self.data, self._duracao, self.likes)
-
-class Serie(Programa):
-    def __init__(self, nome, data, temporadas):
-        super().__init__(nome, data)
-        self._temporadas = temporadas
-
-    def __str__(self):
-        return "Nome: {} - Data: {} - Temporadas: {} temporadas - Likes: {} likes".format(self.nome, self.data, self._temporadas, self.likes)
-
-
-vingadores = Filme("vingadores guerra infinita", 2018, 180)
-vingadores.dar_like()
-vingadores.dar_like()
-vingadores.dar_like()
-vingadores.dar_like()
-
-how_i_met_your_mother = Serie(" how i met your mother", 2012, 8)
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-how_i_met_your_mother.dar_like()
-
-lista = [vingadores, how_i_met_your_mother]
-
-for programa in lista:
-    print(programa)
+print("Catalog")
+catalog = [avengers, himym, th, dbz]
+for program in catalog:
+    print(program)

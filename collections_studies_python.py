@@ -3,66 +3,66 @@ import numpy as numpy
 from abc import ABCMeta, abstractmethod
 #ABCMeta transform class into an abstract class
 #abstractmethod transform method into a abstract method
-class Conta(metaclass= ABCMeta):
+class Account(metaclass= ABCMeta):
 
-    def __init__(self, codigo):
-        self._codigo = codigo
-        self._saldo = 0
-
-    @property
-    def saldo(self):
-        return self._saldo
+    def __init__(self, code):
+        self._code = code
+        self._balance = 0
 
     @property
-    def codigo(self):
-        return self._codigo
+    def balance(self):
+        return self._balance
 
-    def deposita(self, valor):
-        self._saldo += valor
+    @property
+    def code(self):
+        return self._code
+
+    def deposit(self, value):
+        self._balance += value
 
     @abstractmethod
-    def passa_mes(self):
+    def next_month(self):
         pass
 
     def __str__(self):
-        return "[>> Codigo {}  Saldo {}<<]".format(self.codigo, self.saldo)
+        return "[>> Code {}  Balance {}<<]".format(self.code, self.balance)
 
-class ContaCorrente(Conta):
+class CheckingAccount(Account):
 
-    def passa_mes(self):
-        self._saldo -= 2
+    def next_month(self):
+        self._balence -= 2
 
-class ContaPoupanca(Conta):
+class SavingsAccount(Account):
 
-    def passa_mes(self):
-        self._saldo *= 1.01
-        self._saldo -= 3
+    def next_months(self):
+        self._balance *= 1.01
+        self._balance -= 3
 
-class ContaInvestimentos(Conta):
+class InvestimentsAccount(Account):
 
-    def passa_mes(self):
+    def next_month(self):
         pass
 
-#nao pode instanciar uma classe abstrata
-'''conta1 = Conta(15)
-conta1.deposita(100)'''
+#it's not possible to call an abstract class
+'''account1 = Account(15)
+account.deposit(100)'''
 
 
-conta2 = ContaCorrente(13)
-conta2.deposita(200)
+account2 = CheckingAccount(13)
+account2.deposit(200)
 
 
-conta3 = ContaPoupanca(16)
-conta3.deposita(400)
+account3 = SavingsAccount(16)
+account3.deposit(400)
 
-conta4 = ContaInvestimentos(89)
+account4 = InvestmentsAccount(89)
 
-contas = [conta2, conta3, conta4]
+accounts = [account2, account3, account4]
 
-for conta in contas:
-    conta.deposita(2)
-    conta.passa_mes()
-    print(conta)
+for account in accounts:
+    account.deposit(2)
+    account.next_month()
+    print(account)
 
 #pip install numpy
 #arrays sao especificos no phyton para trabalhar com listas com elementos especificos

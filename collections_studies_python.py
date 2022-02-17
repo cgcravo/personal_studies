@@ -1,7 +1,8 @@
 import numpy as numpy
 
 from abc import ABCMeta, abstractmethod
-#ABCMeta para transformar a classe em abstrata
+#ABCMeta transform class into an abstract class
+#abstractmethod transform method into a abstract method
 class Conta(metaclass= ABCMeta):
 
     def __init__(self, codigo):

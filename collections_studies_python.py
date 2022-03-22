@@ -382,3 +382,9 @@ def conta_letras(texto):
         print("{} => {:.2f}%".format(caractere, proporcao*100))
 
 conta_letras(texto2)
+
+# copiando elementos de uma lista
+# x = [lista] (x e uma referencia para o objeto lista)
+# y = x (copia apenas a referencia)
+# y[2] vai mudar o elemento la dentro do objeto, tanto em x quanto em y
+# y = list(x) ou y = x[:] cria um outro objeto lista copia do objeto x

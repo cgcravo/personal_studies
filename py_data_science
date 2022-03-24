@@ -1,0 +1,34 @@
+#packages sao diretorios de scripts (modulos) que especificam funcoes, metodos e tipos
+#numpy e o pacote de python para trabalhar eficientemente com arrays
+#matplotlib e o pacote de python para visualizacao de data
+#scikit-learn e o pacote para trabalhar com machine learning
+
+#instalando pacotes no seu proprio sistema:
+#http://pip.readthedocs.org/en/stable/installing/
+#download: get-pip.py
+#ir para o terminal e executar: python3 get-pip.py
+#agora podemos usar pip para instalar qualquer pacote
+#instalando numpy (no terminal): pip3 install numpy
+
+#importantado pacotes ou modulos do pacote:
+#import numpy (importar o pacote inteiro)
+#import numpy as py (atribuir um outro nome para facilitar na chamada)
+#from numpy import array (importar apenas um modulo do pacote)
+
+
+
+
+
+#tudo em py e um objeto, mesmo classes e metaclasses
+#copiando uma lista:
+x = ["a", "b", "c"]
+y=x #cria uma outra referencia, nao um, novo objeto
+y[1] = "z"
+print(x) #veremos que alterar y altera o valor de x tb
+#para criar outro objeto:
+y = list(x)
+#ou
+y = x[:]
+
+#metodos sao funcoes que pertencem a um objeto especifico. Sao chamadas com a notacao: objeto.metodo(argumento)
+#objetos de tipos diferentes podem ter metodos diferentes de mesmo nome. O metodo depende do tipo do objeto.

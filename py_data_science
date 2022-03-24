@@ -15,20 +15,11 @@
 #import numpy as py (atribuir um outro nome para facilitar na chamada)
 #from numpy import array (importar apenas um modulo do pacote)
 
+#numpy arrays:
+#so podem ter 1 tipo de elementos
+#podemos fazer subsetting com arrays de booleans ex: x[>23] (so pega elementos onde ">23" for true)
+#arrays podem ser multidimensionais (listas dentro de listas). array_exemplo.shape => atributo (sem chaves) que devolve o numero de linhas e colunas (e dimensoes) do array 
+#subsetting 2d array: array[linha][coluna] ou array[linha,coluna]
 
 
 
-
-#tudo em py e um objeto, mesmo classes e metaclasses
-#copiando uma lista:
-x = ["a", "b", "c"]
-y=x #cria uma outra referencia, nao um, novo objeto
-y[1] = "z"
-print(x) #veremos que alterar y altera o valor de x tb
-#para criar outro objeto:
-y = list(x)
-#ou
-y = x[:]
-
-#metodos sao funcoes que pertencem a um objeto especifico. Sao chamadas com a notacao: objeto.metodo(argumento)
-#objetos de tipos diferentes podem ter metodos diferentes de mesmo nome. O metodo depende do tipo do objeto.

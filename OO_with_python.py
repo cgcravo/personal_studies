@@ -1,3 +1,19 @@
+
+#tudo em py e um objeto, mesmo classes e metaclasses
+#copiando uma lista:
+x = ["a", "b", "c"]
+y=x #cria uma outra referencia, nao um, novo objeto
+y[1] = "z"
+print(x) #veremos que alterar y altera o valor de x tb
+#para criar outro objeto:
+y = list(x)
+#ou
+y = x[:]
+
+#metodos sao funcoes que pertencem a um objeto especifico. Sao chamadas com a notacao: objeto.metodo(argumento)
+#objetos de tipos diferentes podem ter metodos diferentes de mesmo nome. O metodo depende do tipo do objeto.
+
+
 class Program:
     def __init__(self, name, date):
         self._name = name.title()

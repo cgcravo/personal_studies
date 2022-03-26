@@ -21,7 +21,18 @@
 #arrays podem ser multidimensionais (listas dentro de listas). array_exemplo.shape => atributo (sem chaves) que devolve o numero de linhas e colunas (e dimensoes) do array 
 #subsetting 2d array: array[linha][coluna] ou array[linha,coluna]
 
+import numpy as np
 
+altura = np.round(np.random.normal(1.75, 0.20, 5000), 2) #argumenos de normal: (media, desvio padrao, amostras)
+peso = np.round(np.random.normal(60.32, 15, 5000), 2)
+
+#estatisticas basicas com numpy:
+np.mean(np_variavel[:,0]) #media dos valores da primeira coluna de um array 2D
+np.median(np_variavel[:,0]) #mediana 
+np.corrcoef(np_variavel[:,0], np_variavel[:,0]) #coeficiencia de correlacao
+np.std(np_variavel[:,0]) #desvio padrao
+np.sum() #soma
+np.sort() #ordenar
 
 
 

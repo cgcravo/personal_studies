@@ -28,10 +28,10 @@ peso = np.round(np.random.normal(60.32, 15, 5000), 2)
 np_cidade = np.column_stack(altura, peso) #juntar como colunas
 
 #estatisticas basicas com numpy:
-np.mean(np_variavel[:,0]) #media dos valores da primeira coluna de um array 2D
-np.median(np_variavel[:,0]) #mediana 
-np.corrcoef(np_variavel[:,0], np_variavel[:,0]) #coeficiencia de correlacao
-np.std(np_variavel[:,0]) #desvio padrao
+np.mean(np_cidade[:,0]) #media dos valores da primeira coluna de um array 2D
+np.median(np_cidade[:,0]) #mediana 
+np.corrcoef(np_cidade[:,0], np_cidade[:,0]) #coeficiencia de correlacao
+np.std(np_cidade[:,0]) #desvio padrao
 np.sum() #soma
 np.sort() #ordenar
 

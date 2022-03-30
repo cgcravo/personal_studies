@@ -35,19 +35,19 @@ np.std(np_cidade[:,0]) #desvio padrao
 np.sum() #soma
 np.sort() #ordenar
 
-
-
-
+#DATA VISUALIZATION
+  
 import  matplotlib.pyplot as plt
 
 year = [1950, 1970, 1990, 2010]
 pop = [2.519, 3.692, 5.263, 6.972] #population in billions
 
 plt.plot(year, pop)
+#What to plot and how to plot a linear function graph. 
 plt.show()
-#plot a linear function graph
-
+#shows displays the plot
 plt.scatter(year, pop)
+#plot a graph of values scattered, just the individual datapoints.
 plt.show()
-#plot a graph of values scattered
+
 

@@ -53,3 +53,11 @@ plt.show()
 
 #change the scale of x axis for log
 plt.xscale("log")
+
+#histogram:
+values = [0, 0.6, 1.4, 1.6, 2.2, 2.5, 2.6, 3.2, 3.5, 3.9, 4.2, 6]
+#cria um histograma a partir de uma lista de valores, com n bins de intervalo.
+plt.hist(values, bins=2)
+plt.show()
+plt.hist(values, bins=3) #Divide a lista em 3 partes iguais de acordo com o range: primeiro bin: quantidade de valores de 0-2; segundo bin:2-4, terceiro bin:4-6. 
+plt.show()

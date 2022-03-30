@@ -59,5 +59,25 @@ values = [0, 0.6, 1.4, 1.6, 2.2, 2.5, 2.6, 3.2, 3.5, 3.9, 4.2, 6]
 #cria um histograma a partir de uma lista de valores, com n bins de intervalo.
 plt.hist(values, bins=2)
 plt.show()
+#clean up the plot
+plt.clf()
 plt.hist(values, bins=3) #Divide a lista em 3 partes iguais de acordo com o range: primeiro bin: quantidade de valores de 0-2; segundo bin:2-4, terceiro bin:4-6. 
+plt.show()
+
+#customizing
+
+year = [1950, 1970, 1990, 2010]
+pop = [2.519, 3.692, 5.263, 6.972]
+plt.plot(year, pop)
+plt.xlabel("Year")
+plt.ylabel("population")
+plt.title("Wolrd Population Projections")
+plt.yticks([0,2,4,6,8,10], ["0","2B", "4B", "6B", "8B", "10B"]) #changes the perspective of the y axis. Seccond argument replaces the first one.
+
+#gdp x life expectation
+plt.scatter(gdp_cap, life_exp , s=pop, c=col, alpha=0.8) #creates a scatter plot with dot's sizes based on the pop size, collors based on a list, alpha = opacity.
+plt.text(1550, 71, 'India') #adds a text on refered place
+plt.text(5700, 80, 'China')
+plt.grid(True) #adds gridlines
+
 plt.show()
